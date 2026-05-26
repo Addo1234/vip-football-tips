@@ -1,0 +1,149 @@
+{
+  "theme_and_archetype": {
+    "domain": "Sports Predictions & Betting SaaS",
+    "theme": "dark",
+    "archetype": "Hybrid: 2 (Performance Pro) & 5 (Luxury)",
+    "emotion": "High stakes, authoritative, precise, elite",
+    "reasoning": "The application requires a dark blue sports theme combining the high-energy command-center precision of 'Performance Pro' with the premium, exclusive 'Luxury' feel for VIP members."
+  },
+  "colors": {
+    "base": {
+      "background": "#0B1021",
+      "surface": "#131B2F",
+      "surface_elevated": "#1A243D"
+    },
+    "accents": {
+      "primary": "#C4FF00",
+      "primary_hover": "#AEE600",
+      "secondary": "#007AFF",
+      "danger": "#FF3B30",
+      "success": "#34C759"
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "#94A3B8",
+      "inverse": "#0B1021"
+    },
+    "borders": {
+      "default": "rgba(255, 255, 255, 0.1)",
+      "focus": "#C4FF00"
+    },
+    "rules": {
+      "cta": "Use primary accent (#C4FF00) for VIP unlock and main conversion buttons ONLY. Text on these buttons MUST be black (#000000) for contrast.",
+      "backgrounds": "Never use pure #000000. Always tint dark backgrounds with deep navy.",
+      "glassmorphism": "For sticky headers, use backdrop-blur-xl with bg-[#0B1021]/70 and a 1px border-white/10."
+    }
+  },
+  "typography": {
+    "fonts": {
+      "heading": "Outfit",
+      "body": "Manrope",
+      "mono": "JetBrains Mono"
+    },
+    "hierarchy": {
+      "h1": "text-5xl md:text-6xl font-black tracking-tighter leading-none",
+      "h2": "text-3xl md:text-4xl font-bold tracking-tight",
+      "h3": "text-xl md:text-2xl font-semibold",
+      "h4": "text-lg font-medium",
+      "body": "text-base font-normal leading-relaxed",
+      "labels": "text-xs font-bold uppercase tracking-[0.2em]"
+    },
+    "rules": {
+      "anti_default": "Do NOT use Inter, Roboto, or standard sans-serif for headings.",
+      "data_display": "Use JetBrains Mono for odds and prediction numbers (e.g., 2.50, 1X) to ensure perfect vertical alignment."
+    }
+  },
+  "spacing_and_layout": {
+    "system": "Generous Spacing Philosophy - use 2x standard padding.",
+    "containers": "max-w-7xl mx-auto px-6 md:px-12",
+    "bento_grid": "For VIP features, use grid-cols-1 md:grid-cols-12 gap-6 or gap-8. Mix tall (span-row-2) and wide (span-col-2) cards.",
+    "data_density": "For the Fixed Odds section, use the 'Control Room' dense grid approach. Tighter gaps (gap-4) and tabular layouts.",
+    "rules": {
+      "cards": "Any card with a border must have at least p-6 padding.",
+      "alignment": "Left-align dense text and prediction data. Center-align hero text only if it serves the impact."
+    }
+  },
+  "components_and_surfaces": {
+    "header": {
+      "style": "Crystal Glass",
+      "classes": "fixed top-0 w-full z-50 backdrop-blur-xl bg-[#0B1021]/80 border-b border-white/10"
+    },
+    "cards": {
+      "style": "Technical/Grid Borders",
+      "classes": "bg-[#131B2F] border border-white/10 rounded-xl relative overflow-hidden",
+      "hover": "hover:-translate-y-1 hover:border-[#C4FF00]/50 transition-all duration-300"
+    },
+    "premium_card": {
+      "style": "Tracing Beam Glow",
+      "classes": "relative bg-[#1A243D] border border-[#C4FF00]/30 rounded-xl shadow-[0_0_30px_rgba(196,255,0,0.1)]"
+    },
+    "buttons": {
+      "primary": "bg-[#C4FF00] text-black font-bold uppercase tracking-wide rounded-lg px-8 py-4 hover:bg-[#AEE600] transition-colors",
+      "secondary": "bg-transparent border-2 border-white/20 text-white font-semibold rounded-lg px-8 py-4 hover:border-white/50 transition-colors"
+    },
+    "shadcn_customization": {
+      "general": "Strip 'Vercel-look' from Shadcn components. Increase border radius slightly to 12px (rounded-xl) for main cards.",
+      "inputs": "bg-[#131B2F] border-white/10 focus:border-[#C4FF00] text-white",
+      "tables": "For Fixed Odds and Results. Use border-collapse with subtle border-b border-white/5 for rows."
+    }
+  },
+  "motion_and_interaction": {
+    "libraries": ["framer-motion", "lenis"],
+    "hero": "Subtle scale up on background image, staggered fade-in up for text elements (H1, Subtitle, CTA).",
+    "scroll": "Lenis for smooth scrolling momentum.",
+    "cards": "Hover states must elevate (-translate-y-1) and increase border opacity.",
+    "marquee": "Use react-fast-marquee for a 'Recent Winners' or 'Live Matches' ticker below the hero. Style: text-sm font-mono tracking-widest bg-[#C4FF00] text-black py-2."
+  },
+  "icons_and_assets": {
+    "icon_library": "@phosphor-icons/react",
+    "icon_style": "Duotone for large decorative icons, Regular for UI elements.",
+    "whatsapp_button": "Fixed bottom-right corner. Use a glowing effect (shadow-lg shadow-green-500/50). bg-[#25D366] text-white p-4 rounded-full z-50 hover:scale-110 transition-transform.",
+    "media": {
+      "hero_background": {
+        "url": "https://static.prod-images.emergentagent.com/jobs/9140492a-890f-4670-be88-c2da75eb9e94/images/e7ce0d98c29e68b3b144a97cac700aec2d11881a6287182abf82299f41953dbe.png",
+        "description": "Dark blue cinematic football stadium at night. Use as full-screen background with bg-[#0B1021]/70 overlay.",
+        "category": "hero"
+      },
+      "vip_concept": {
+        "url": "https://static.prod-images.emergentagent.com/jobs/9140492a-890f-4670-be88-c2da75eb9e94/images/3bf8ae8ad98a32be080ea15cf8d87f256abb3acad40c76377c2126705bd19ba4.png",
+        "description": "Abstract glowing football sphere with neon accents. Use for the Premium Predictions section background or side graphic.",
+        "category": "section_art"
+      },
+      "vip_pass": {
+        "url": "https://static.prod-images.emergentagent.com/jobs/9140492a-890f-4670-be88-c2da75eb9e94/images/de4d04dd0f3f746b7438a6c7ffba1d07d911867d09e7403e4268855260deeeab.png",
+        "description": "Premium gold and navy blue VIP pass. Use inside the 'Unlock VIP Games' payment CTA card.",
+        "category": "card_art"
+      }
+    }
+  },
+  "page_specific_instructions": {
+    "homepage": {
+      "hero": "Full height (min-h-[90vh]). Centered heavy typography. Background: hero_background with heavy dark overlay to ensure text contrast.",
+      "vip_games": "Bento grid layout. Locked state visually obscured with a blur filter (backdrop-blur-sm) and a centered Lock icon.",
+      "premium_predictions": "High-contrast section. Use vip_concept as a subtle watermark background.",
+      "fixed_odds": "Tabular format using 'Control Room' grid. Show match details, odds numbers in monospace, and a clear bet/copy action.",
+      "results": "Minimalist list view. Green for WINS, Red for LOSSES. Data-heavy but spacious.",
+      "footer": "Dark background, solid structure. Social links prominent."
+    },
+    "auth_pages": {
+      "layout": "Split screen. Left side: form with minimal borders. Right side: hero_background with a large brand statement."
+    },
+    "dashboard_admin": {
+      "layout": "Sidebar navigation. Dense data tables for managing games and users. Strict grid hierarchy."
+    }
+  },
+  "technical_requirements": {
+    "testing": "All interactive elements MUST have data-testid attributes (e.g., data-testid='vip-unlock-btn', data-testid='login-submit').",
+    "accessibility": "Ensure contrast ratios for text over images. Focus states must be highly visible (ring-2 ring-[#C4FF00]).",
+    "payment": "Implement Paystack flow clearly. After successful payment, the 'Locked' UI for VIP games transitions to unlocked."
+  },
+  "instructions_to_main_agent": [
+    "Install required dependencies: yarn add @phosphor-icons/react framer-motion react-fast-marquee @studio-freight/lenis",
+    "Update Tailwind config to include Outfit, Manrope, and JetBrains Mono fonts.",
+    "Implement the Hero section using the provided hero_background image.",
+    "Build the Fixed Odds and VIP sections with the exact color hex codes provided (base #0B1021, surface #131B2F, primary #C4FF00).",
+    "Ensure the floating WhatsApp button is absolutely positioned and has a high z-index.",
+    "Do NOT use placeholder images. Rely exclusively on the media URLs provided in this JSON.",
+    "Follow the specific typography scales—never use text-7xl or above for the hero."
+  ]
+}
