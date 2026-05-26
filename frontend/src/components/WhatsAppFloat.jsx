@@ -1,7 +1,7 @@
 import React from "react";
 import { WhatsappLogo } from "@phosphor-icons/react";
 
-const WHATSAPP_NUMBER = "233123456789";
+const WHATSAPP_NUMBER = "233541799703";
 
 const WhatsAppFloat = () => {
   return (

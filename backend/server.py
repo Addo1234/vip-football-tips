@@ -1,5 +1,6 @@
 from fastapi import FastAPI, APIRouter, HTTPException, Depends, status, Request
 from fastapi.security import OAuth2PasswordBearer
+from contextlib import asynccontextmanager
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -474,73 +475,7 @@ async def list_contact_messages(admin=Depends(get_admin_user)):
 
 
 # ============== Startup: seed admin & demo games ==============
-@app.on_event("startup")
-async def seed_data():
-    # Seed admin
-    existing_admin = await db.users.find_one({"email": ADMIN_EMAIL.lower()})
-    if not existing_admin:
-        await db.users.insert_one({
-            "id": str(uuid.uuid4()),
-            "name": "Admin",
-            "email": ADMIN_EMAIL.lower(),
-            "password": hash_password(ADMIN_PASSWORD),
-            "role": "admin",
-            "vip_active": True,
-            "vip_expires_at": (datetime.now(timezone.utc) + timedelta(days=3650)).isoformat(),
-            "created_at": now_iso(),
-        })
-        logging.info(f"Seeded admin user: {ADMIN_EMAIL}")
-
-    # Seed some sample games if collection empty
-    count = await db.games.count_documents({})
-    if count == 0:
-        now = datetime.now(timezone.utc)
-        samples = [
-            # VIP
-            {"home_team": "Manchester City", "away_team": "Liverpool", "league": "Premier League",
-             "match_date": (now + timedelta(days=1)).isoformat(), "prediction": "Over 2.5 Goals",
-             "odds": 1.85, "category": "vip", "confidence": 92, "notes": "Both teams in great form."},
-            {"home_team": "Real Madrid", "away_team": "Barcelona", "league": "La Liga",
-             "match_date": (now + timedelta(days=2)).isoformat(), "prediction": "Both Teams to Score",
-             "odds": 1.65, "category": "vip", "confidence": 88, "notes": "Classic El Clasico clash."},
-            {"home_team": "Bayern Munich", "away_team": "Dortmund", "league": "Bundesliga",
-             "match_date": (now + timedelta(days=3)).isoformat(), "prediction": "Bayern Win & Over 2.5",
-             "odds": 2.10, "category": "vip", "confidence": 85, "notes": ""},
-            # Premium
-            {"home_team": "Arsenal", "away_team": "Chelsea", "league": "Premier League",
-             "match_date": (now + timedelta(days=1)).isoformat(), "prediction": "Arsenal Win",
-             "odds": 1.95, "category": "premium", "confidence": 78, "notes": "Home advantage matters."},
-            {"home_team": "PSG", "away_team": "Marseille", "league": "Ligue 1",
-             "match_date": (now + timedelta(days=2)).isoformat(), "prediction": "PSG -1 AH",
-             "odds": 1.75, "category": "premium", "confidence": 82, "notes": ""},
-            # Fixed odds
-            {"home_team": "Inter Milan", "away_team": "Juventus", "league": "Serie A",
-             "match_date": (now + timedelta(days=1)).isoformat(), "prediction": "Draw",
-             "odds": 3.20, "category": "fixed_odds", "confidence": 70, "notes": ""},
-            {"home_team": "Ghana", "away_team": "Nigeria", "league": "AFCON",
-             "match_date": (now + timedelta(days=4)).isoformat(), "prediction": "Ghana Win",
-             "odds": 2.45, "category": "fixed_odds", "confidence": 75, "notes": ""},
-            # Results
-            {"home_team": "Tottenham", "away_team": "West Ham", "league": "Premier League",
-             "match_date": (now - timedelta(days=1)).isoformat(), "prediction": "Over 2.5",
-             "odds": 1.80, "category": "premium", "confidence": 80, "notes": "",
-             "status": "won", "score": "3-1"},
-            {"home_team": "AC Milan", "away_team": "Napoli", "league": "Serie A",
-             "match_date": (now - timedelta(days=2)).isoformat(), "prediction": "BTTS",
-             "odds": 1.70, "category": "vip", "confidence": 87, "notes": "",
-             "status": "won", "score": "2-2"},
-            {"home_team": "Atletico Madrid", "away_team": "Sevilla", "league": "La Liga",
-             "match_date": (now - timedelta(days=3)).isoformat(), "prediction": "Atletico Win",
-             "odds": 1.55, "category": "fixed_odds", "confidence": 75, "notes": "",
-             "status": "lost", "score": "0-1"},
-        ]
-        for s in samples:
-            s["id"] = str(uuid.uuid4())
-            s.setdefault("status", "pending")
-            s.setdefault("score", None)
-            s["created_at"] = now_iso()
-            await db.games.insert_one(s)
-        logging.info(f"Seeded {len(samples)} sample games")
+# (Moved to lifespan handler above)
 
 
 # Include router and CORS
@@ -555,8 +490,3 @@ app.add_middleware(
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
-
-
-@app.on_event("shutdown")
-async def shutdown_db_client():
-    client.close()

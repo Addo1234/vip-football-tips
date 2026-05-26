@@ -52,7 +52,7 @@ const Footer = () => {
               <a href="https://instagram.com" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-lg bg-brand-elevated hover:bg-brand-primary hover:text-black flex items-center justify-center transition-colors" data-testid="footer-instagram">
                 <InstagramLogo size={20} weight="bold" />
               </a>
-              <a href="https://wa.me/233123456789" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-lg bg-brand-elevated hover:bg-brand-primary hover:text-black flex items-center justify-center transition-colors" data-testid="footer-whatsapp">
+              <a href="https://wa.me/233541799703" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-lg bg-brand-elevated hover:bg-brand-primary hover:text-black flex items-center justify-center transition-colors" data-testid="footer-whatsapp">
                 <WhatsappLogo size={20} weight="bold" />
               </a>
             </div>

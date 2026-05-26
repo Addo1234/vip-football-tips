@@ -43,7 +43,7 @@ const ContactPage = () => {
           <div className="card-base p-6 text-center">
             <WhatsappLogo size={32} weight="duotone" className="text-brand-primary mx-auto mb-3" />
             <div className="label-uppercase text-white/50 mb-1">WhatsApp</div>
-            <div className="font-semibold">+233 12 345 6789</div>
+            <div className="font-semibold">+233 54 179 9703</div>
           </div>
           <div className="card-base p-6 text-center">
             <MapPin size={32} weight="duotone" className="text-brand-primary mx-auto mb-3" />
